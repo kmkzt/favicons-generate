@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "src"
   ],
   "bin": {
-    "favicons-generate": "dist/favicons-generate.cjs.production.min.js"
+    "favicons-generate": "./cli.js"
   },
   "engines": {
     "node": ">=10"
