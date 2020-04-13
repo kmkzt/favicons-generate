@@ -1,6 +1,6 @@
 import { program } from 'commander';
 import { cosmiconfig } from 'cosmiconfig';
-import {CosmiconfigResult} from 'cosmiconfig/dist/types';
+import { CosmiconfigResult } from 'cosmiconfig/dist/types';
 import { generate } from './generate';
 import { __VERSION__, __DEV__, PKG } from './constants';
 const explorer = cosmiconfig('favicon');
