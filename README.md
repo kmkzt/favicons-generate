@@ -11,9 +11,9 @@ npm i -g favicons-generate
 ## usage
 
 ```shell
-$ favicons-generate
+$ favicons-generate -h
 
-Usage: favicons-generate --output ./facvicons
+Usage: favicons-generate --input ./example.svg --output ./favicons
 
 Options:
   -v, --version              output the current version

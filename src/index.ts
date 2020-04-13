@@ -23,8 +23,7 @@ program
     '-t, --template <template>',
     'Output template path. example: --template ./template'
   )
-  .usage('--input favicons.svg')
-  .usage('--output ./facvicons')
+  .usage('--input ./example.svg --output ./favicons')
   .action(({ input, output, template }) => {
     /**
      * Configuration perser
