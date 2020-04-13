@@ -1,6 +1,6 @@
 # favicons-generate
 
-A library that generates favicons using [favicons](https://github.com/itgalaxy/favicons)
+This library is a CLI for generating favicons using [favicons](https://github.com/itgalaxy/favicons)
 
 ## Install
 
