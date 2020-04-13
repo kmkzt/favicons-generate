@@ -45,7 +45,7 @@ export const generate = ({ input, output, template, config }: Option) => {
     /**
      * Write favicon image
      */
-    checkDir(dirname(output), () => {
+    checkDir(output, () => {
       const writeFaviconImage = (
         outputDir: string,
         encoding: 'buffer' | 'utf-8'
@@ -67,12 +67,11 @@ export const generate = ({ input, output, template, config }: Option) => {
      * Write favicon template
      */
     const templateOutput = template || output;
-    checkDir(dirname(templateOutput), () => {
-      const formatTemplateOutput = (templatePath: string) =>
-        extname(templatePath) === '.html'
-          ? templatePath
-          : dirname(templatePath) + '/meta.html';
-      const templateOutputFile = formatTemplateOutput(templateOutput);
+    const templateOutputFile =
+      extname(templateOutput) === '.html'
+        ? templateOutput
+        : dirname(templateOutput) + '/meta.html';
+    checkDir(dirname(templateOutputFile), () => {
       console.log(`made template: ${templateOutputFile}`);
       writeFileSync(templateOutputFile, response.html.join(''));
     });

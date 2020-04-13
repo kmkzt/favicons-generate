@@ -1,3 +1,4 @@
+import { dirname, resolve } from 'path';
 import { program } from 'commander';
 import { cosmiconfig } from 'cosmiconfig';
 import { CosmiconfigResult } from 'cosmiconfig/dist/types';
@@ -32,37 +33,41 @@ program
       .search()
       .then((result: CosmiconfigResult) => {
         if (__DEV__) {
-          console.log('input', input);
-          console.log('output', output);
-          console.log('template', template);
-          console.log('config', result);
+          console.log('input: ', input);
+          console.log('output: ', output);
+          console.log('template: ', template);
+          console.log('config: ', result);
+          console.log('config path:', result && dirname(result.filepath));
         }
+        if (!result) {
+          throw 'config parse error';
+        }
+        const configPath = dirname(result.filepath);
 
         // result.config is the parsed configuration object.
         // result.filepath is the path to the config file that was found.
         // result.isEmpty is true if there was nothing to parse in the config file.
-        const faviconImage = input || result?.config.input;
-        const outputPath = output || result?.config.output;
-        const templatePath = template || result?.config.template;
-
+        const faviconImage = input || result.config.input;
+        const outputPath = output || result.config.output;
+        const templatePath = template || result.config.template;
         if (!faviconImage) {
-          throw 'required favicon image.'
+          throw 'required favicon image';
         }
 
         if (!outputPath) {
-          throw 'required output path'
+          throw 'required output path';
         }
 
         generate({
-          ...(result?.config || {}),
-          input: faviconImage,
-          output: outputPath,
-          template: templatePath,
+          input: resolve(configPath, faviconImage),
+          output: resolve(configPath, outputPath),
+          template: resolve(configPath, templatePath),
+          config: result.config.config,
         });
       })
       .catch(error => {
         // Do something constructive.
-        console.log('error', error);
+        console.error(error);
       });
   });
 
