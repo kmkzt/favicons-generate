@@ -1,2 +1,2 @@
-#!/usr/bin/env NODE_ENV=production node
-require('../dist/index.js');
+#!/usr/bin/env node
+require('../dist/favicons-generate.cjs.production.min.js');
