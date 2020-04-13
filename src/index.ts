@@ -1,5 +1,6 @@
-import { cosmiconfig } from 'cosmiconfig';
 import { program } from 'commander';
+import { cosmiconfig } from 'cosmiconfig';
+import {CosmiconfigResult} from 'cosmiconfig/dist/types';
 import { generate } from './generate';
 import { __VERSION__, __DEV__, PKG } from './constants';
 const explorer = cosmiconfig('favicon');
@@ -30,22 +31,31 @@ program
      */
     explorer
       .search()
-      .then((result: any) => {
+      .then((result: CosmiconfigResult) => {
         if (__DEV__) {
           console.log('input', input);
           console.log('output', output);
           console.log('template', template);
           console.log('config', result);
         }
+
         // result.config is the parsed configuration object.
         // result.filepath is the path to the config file that was found.
         // result.isEmpty is true if there was nothing to parse in the config file.
-        const faviconImage = input || result.config.input;
-        const outputPath = output || result.config.output;
-        const templatePath = template || result.config.template;
+        const faviconImage = input || result?.config.input;
+        const outputPath = output || result?.config.output;
+        const templatePath = template || result?.config.template;
+
+        if (!faviconImage) {
+          throw 'required favicon image.'
+        }
+
+        if (!outputPath) {
+          throw 'required output path'
+        }
 
         generate({
-          ...result.config,
+          ...(result?.config || {}),
           input: faviconImage,
           output: outputPath,
           template: templatePath,
