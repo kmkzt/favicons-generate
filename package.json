@@ -1,11 +1,19 @@
 {
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmkzt/favicons-generate.git"
+  },
+  "keywords": [
+    "favicons",
+    "cli"
   ],
   "bin": {
     "favicons-generate": "./cli.js"
