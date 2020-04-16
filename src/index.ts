@@ -6,9 +6,6 @@ import { generate } from './generate';
 import { __VERSION__, __DEV__, PKG } from './constants';
 const explorer = cosmiconfig('favicon');
 
-/**
- *
- */
 program
   .name(PKG)
   .version(__VERSION__, '-v, --version', 'output the current version')
@@ -25,7 +22,20 @@ program
     'Output template path. example: --template ./template'
   )
   .usage('--input ./example.svg --output ./favicons')
-  .action(({ input, output, template }) => {
+  .action(argv => {
+    /**
+     * Cli Parameter (Override Path)
+     */
+    const overrideFaviconImage = argv.input
+      ? resolve(process.cwd(), argv.input)
+      : undefined;
+    const overrideOutputPath = argv.output
+      ? resolve(process.cwd(), argv.output)
+      : undefined;
+    const overrideTemplatePath = argv.template
+      ? resolve(process.cwd(), argv.template)
+      : undefined;
+
     /**
      * Configuration perser
      */
@@ -33,36 +43,51 @@ program
       .search()
       .then((result: CosmiconfigResult) => {
         if (__DEV__) {
-          console.log('input: ', input);
-          console.log('output: ', output);
-          console.log('template: ', template);
+          console.log('overrideFaviconImage: ', overrideFaviconImage);
+          console.log('overrideOutputPath: ', overrideOutputPath);
+          console.log('overrideTemplatePath: ', overrideTemplatePath);
           console.log('config: ', result);
           console.log('config path:', result && dirname(result.filepath));
         }
-        if (!result) {
-          throw 'config parse error';
-        }
-        const configPath = dirname(result.filepath);
 
-        // result.config is the parsed configuration object.
-        // result.filepath is the path to the config file that was found.
-        // result.isEmpty is true if there was nothing to parse in the config file.
-        const faviconImage = input || result.config.input;
-        const outputPath = output || result.config.output;
-        const templatePath = template || result.config.template;
-        if (!faviconImage) {
-          throw 'required favicon image';
+        /**
+         * Config parameter format
+         */
+        const configPath: string | undefined =
+          result && result.filepath ? dirname(result.filepath) : undefined;
+        const faviconImage: string | undefined =
+          configPath && result && result.config.input
+            ? resolve(configPath, result.config.input)
+            : undefined;
+        const outputPath: string | undefined =
+          configPath && result && result.config.input
+            ? resolve(configPath, result.config.input)
+            : undefined;
+        const templatePath: string | undefined =
+          configPath && result && result.config.template
+            ? resolve(configPath, result.config.template)
+            : undefined;
+
+        /**
+         * Check Parameter
+         */
+        const input: string | undefined = overrideFaviconImage || faviconImage;
+        if (!input) {
+          throw 'required favicon image.';
+        }
+        const output: string | undefined = overrideOutputPath || outputPath;
+        if (!output) {
+          throw 'required output path.';
         }
 
-        if (!outputPath) {
-          throw 'required output path';
-        }
-
+        /**
+         * generate favicons
+         */
         generate({
-          input: resolve(configPath, faviconImage),
-          output: resolve(configPath, outputPath),
-          template: resolve(configPath, templatePath),
-          config: result.config.config,
+          input,
+          output,
+          template: overrideTemplatePath || templatePath,
+          config: result ? result.config.config : undefined,
         });
       })
       .catch(error => {
