@@ -60,8 +60,8 @@ program
             ? resolve(configPath, result.config.input)
             : undefined;
         const outputPath: string | undefined =
-          configPath && result && result.config.input
-            ? resolve(configPath, result.config.input)
+          configPath && result && result.config.output
+            ? resolve(configPath, result.config.output)
             : undefined;
         const templatePath: string | undefined =
           configPath && result && result.config.template
