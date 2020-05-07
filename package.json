@@ -26,6 +26,7 @@
     "build": "tsdx build --target node",
     "todo:test": "tsdx test",
     "lint": "tsdx lint",
+    "release": "release-it",
     "prepare": "yarn build"
   },
   "peerDependencies": {},
