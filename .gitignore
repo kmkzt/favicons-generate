@@ -4,4 +4,5 @@ node_modules
 dist
 favicons
 
+package-lock.json
 # yarn.lock
