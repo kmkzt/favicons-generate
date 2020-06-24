@@ -49,15 +49,15 @@
     "@types/jest": "25.2.1",
     "@types/mkdirp": "1.0.0",
     "husky": "4.2.5",
-    "release-it": "13.5.8",
+    "release-it": "13.6.3",
     "tsdx": "0.13.1",
-    "tslib": "1.11.1",
-    "typescript": "3.8.3"
+    "tslib": "1.13.0",
+    "typescript": "3.9.5"
   },
   "dependencies": {
-    "commander": "5.0.0",
+    "commander": "5.1.0",
     "cosmiconfig": "6.0.0",
-    "favicons": "6.0.0",
+    "favicons": "6.1.0",
     "mkdirp": "1.0.4"
   },
   "publishConfig": {
