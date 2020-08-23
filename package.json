@@ -46,13 +46,13 @@
   "module": "dist/index.js",
   "devDependencies": {
     "@types/favicons": "5.5.0",
-    "@types/jest": "25.2.1",
-    "@types/mkdirp": "1.0.0",
+    "@types/jest": "25.2.3",
+    "@types/mkdirp": "1.0.1",
     "husky": "4.2.5",
-    "release-it": "13.6.3",
-    "tsdx": "0.13.1",
+    "release-it": "13.6.9",
+    "tsdx": "0.13.3",
     "tslib": "1.13.0",
-    "typescript": "3.9.5"
+    "typescript": "3.9.7"
   },
   "dependencies": {
     "commander": "5.1.0",
