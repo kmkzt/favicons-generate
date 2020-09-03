@@ -57,7 +57,7 @@
   "dependencies": {
     "commander": "5.1.0",
     "cosmiconfig": "6.0.0",
-    "favicons": "6.1.0",
+    "favicons": "6.2.0",
     "mkdirp": "1.0.4"
   },
   "publishConfig": {
