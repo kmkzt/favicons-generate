@@ -52,7 +52,7 @@
     "release-it": "13.6.9",
     "tsdx": "0.13.3",
     "tslib": "1.13.0",
-    "typescript": "3.9.7"
+    "typescript": "3.9.9"
   },
   "dependencies": {
     "commander": "5.1.0",
