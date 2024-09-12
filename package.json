@@ -46,7 +46,7 @@
   "module": "dist/index.js",
   "devDependencies": {
     "@types/favicons": "5.5.0",
-    "@types/jest": "25.2.3",
+    "@types/jest": "29.5.13",
     "@types/mkdirp": "1.0.1",
     "husky": "4.2.5",
     "release-it": "13.6.9",
