@@ -45,20 +45,20 @@
   "author": "kmkzt",
   "module": "dist/index.js",
   "devDependencies": {
-    "@types/favicons": "5.5.0",
+    "@types/favicons": "7.0.0",
     "@types/jest": "25.2.3",
-    "@types/mkdirp": "1.0.1",
-    "husky": "4.2.5",
-    "release-it": "13.6.9",
+    "@types/mkdirp": "2.0.0",
+    "husky": "9.1.6",
+    "release-it": "17.10.0",
     "tsdx": "0.13.3",
-    "tslib": "1.13.0",
-    "typescript": "3.9.7"
+    "tslib": "2.8.0",
+    "typescript": "5.6.3"
   },
   "dependencies": {
-    "commander": "5.1.0",
-    "cosmiconfig": "6.0.0",
-    "favicons": "6.2.0",
-    "mkdirp": "1.0.4"
+    "commander": "12.1.0",
+    "cosmiconfig": "9.0.0",
+    "favicons": "7.2.0",
+    "mkdirp": "3.0.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
